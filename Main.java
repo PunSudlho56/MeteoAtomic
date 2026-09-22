@@ -1,17 +1,23 @@
-import java.awt.*;
 import javax.swing.*;
 
 public class Main extends JFrame {
     public Main() {
         setTitle("Meteo");
-        setSize(1000, 563);
+        setSize(800, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        
-        JPanel bck = new JPanel();
-        bck.setBackground(Color.BLACK);
 
-        add(bck);
+        String text = JOptionPane.showInputDialog(this,"Enter the meteo you need.");
+        int number = 5;
+        try{
+            number = Integer.parseInt(text);
+            if (number < 1){
+                number = 5;
+            }
+        }catch(Exception e){}
+
+        Scene scene = new Scene(number);
+        add(scene);
         setVisible(true);
     }
 

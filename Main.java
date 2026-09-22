@@ -14,7 +14,7 @@ public class Main extends JFrame {
         add(bck);
         setVisible(true);
     }
-
+//sos
     public static void main(String[] args) {
         new Main();
         

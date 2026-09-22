@@ -1,8 +1,7 @@
-import java.awt.Color;
-import javax.swing.JPanel;
-import java.awt.Graphics;
-import java.util.ArrayList;
-import java.util.Random;
+import java.awt.*;
+import javax.swing.*;
+import java.util.*;
+
 public class Scene extends JPanel {
     private ArrayList<Meteo> meteos = new ArrayList<Meteo>();
     private Random random = new Random();
@@ -29,15 +28,33 @@ public class Scene extends JPanel {
     protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		for (Meteo meteor : meteos) {
-			g.drawImage(meteor.getImage(), meteor.getX(), meteor.getY(), this);
+			if (!meteor.isAlive()) { //เช็คว่า meteo เดรสยัง
+        		continue;
+    		}
+
+			if (meteor.isExploding()){ //เช็คว่า meteo ชนกันเอง ถ้าชนวาด gif
+				g.drawImage(
+                    meteor.getExplosionImage(),meteor.getX(),meteor.getY(),meteor.getSize(),meteor.getSize(),this);
+			} else {
+				g.drawImage(meteor.getImage(), meteor.getX(), meteor.getY(), this);
+			}
+			
 		}
 	}
 
     public synchronized boolean isColliding(Meteo current) {
+		if (current.isExploding()){ //ไม่ให้ตัวที่กำลังระเบิดไปชนกับตัวอื่น
+			return false;
+		}
+
 		for (Meteo meteor : meteos) {
 			if (meteor != current
+					&& !meteor.isExploding()
 					&& Math.abs(current.getX() - meteor.getX()) < current.getSize()
 					&& Math.abs(current.getY() - meteor.getY()) < current.getSize()) {
+
+				meteor.explode();
+
 				return true;
 			}
 		}

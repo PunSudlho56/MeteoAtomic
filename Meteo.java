@@ -1,3 +1,60 @@
-class Meteo {
+import java.awt.Image;
+import javax.swing.ImageIcon;
+public class Meteo implements Runnable {
+    private int x;
+    private int y;
+    private int dx;
+    private int dy;
+    private final int size = 45;
+    private Image image;
+    private Scene owner;
+
+    public Meteo(int x, int y, int dx, int dy, int imageNumber, Scene owner) {
+		this.x = x;
+		this.y = y;
+		this.dx = dx;
+		this.dy = dy;
+		this.owner = owner;
+		image = new ImageIcon("images/" + imageNumber + ".png")
+				.getImage().getScaledInstance(size, size, Image.SCALE_SMOOTH);
+	}
+    public void start() {
+        Thread thread = new Thread(this);
+        thread.start();
+    }
+
+    public void run(){
+        while (true){
+            if (owner.getWidth()<= size || owner.getHeight() <= size){
+                try{
+                    Thread.sleep(5);
+                }catch(Exception e){
+                    return;
+                }
+                continue;
+            }
+            x = x + dx;
+			y = y + dy;
+
+			// ชนขอบแล้วสะท้อนกลับ
+			if (x <= 0 || x + size >= owner.getWidth()) {
+				dx = -dx;
+			}
+			if (y <= 0 || y + size >= owner.getHeight()) {
+				dy = -dy;
+			}
+
+            owner.repaint();
+			try {
+				Thread.sleep(5);
+			} catch (InterruptedException e) {
+				return;
+			}
+        }
+    }
+    public int getX() {return x;}
+	public int getY() {return y;}
+	public int getSize() {return size;}
+	public Image getImage() {return image;}
 
 }

@@ -123,3 +123,4 @@ public class Meteo implements Runnable {
     }
 
 }
+//skgshilgfjdk

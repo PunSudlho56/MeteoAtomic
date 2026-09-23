@@ -1,7 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 import java.util.*;
-
+//11
 public class Scene extends JPanel {
     private ArrayList<Meteo> meteos = new ArrayList<Meteo>();
     private Random random = new Random();

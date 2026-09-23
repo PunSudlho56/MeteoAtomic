@@ -1,7 +1,7 @@
 
 import java.awt.*;
 import javax.swing.*;
-
+//11
 public class Meteo implements Runnable {
 
     private int x;

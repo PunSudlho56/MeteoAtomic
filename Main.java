@@ -1,6 +1,6 @@
 
 import javax.swing.*;
-
+//11
 public class Main extends JFrame {
 
     public Main() {
@@ -15,7 +15,7 @@ public class Main extends JFrame {
             number = Integer.parseInt(text);
             if (number < 1) {
                 number = 5;
-            }่
+            }
         } catch (Exception e) {
         }
 

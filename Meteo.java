@@ -12,7 +12,7 @@ public class Meteo implements Runnable {
     private Image image;
     private Image explosionImage;
     private Scene owner;
-    boolean alive = true;
+    private boolean alive = true;
     private boolean exploding = false;
 
     public Meteo(int x, int y, int dx, int dy, int imageNumber, Scene owner) {

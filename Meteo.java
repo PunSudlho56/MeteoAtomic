@@ -62,21 +62,20 @@ public class Meteo implements Runnable {
             y = y + dy;
 
             // ชนขอบแล้วสะท้อนกลับ
-            if (x <= 0 || x + size >= owner.getWidth()) {
-                dx = -dx;
-                if (dx > 0) {
-                    dx++;
-                } else {
-                    dx--;
-                }
+             if (x <= 0) {
+                x = 0;
+                dx = Math.abs(dx) + 1;
+            } else if (x + size >= owner.getWidth()) {
+                x = owner.getWidth() - size;
+                dx = -(Math.abs(dx) + 1);
             }
-            if (y <= 0 || y + size >= owner.getHeight()) {
-                dy = -dy;
-                if (dy > 0) {
-                    dy++;
-                } else {
-                    dy--;
-                }
+
+            if (y <= 0) {
+                y = 0;
+                dy = Math.abs(dy) + 1; 
+            } else if (y + size >= owner.getHeight()) {
+                y = owner.getHeight() - size;
+                dy = -(Math.abs(dy) + 1); 
             }
 
             owner.isColliding(this);

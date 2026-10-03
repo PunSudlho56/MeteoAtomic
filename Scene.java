@@ -28,11 +28,11 @@ public class Scene extends JPanel {
     protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		for (Meteo meteor : meteos) {
-			if (!meteor.isAlive()) { //เช็คว่า meteo เดรสยัง
+			if (!meteor.isAlive()) {
         		continue;
     		}
 
-			if (meteor.isExploding()){ //เช็คว่า meteo ชนกันเอง ถ้าชนวาด gif
+			if (meteor.isExploding()){
 				g.drawImage(
                     meteor.getExplosionImage(),meteor.getX(),meteor.getY(),meteor.getSize(),meteor.getSize(),this);
 			} else {
@@ -43,7 +43,7 @@ public class Scene extends JPanel {
 	}
 
     public synchronized boolean isColliding(Meteo current) {
-		if (current.isExploding()){ //ไม่ให้ตัวที่กำลังระเบิดไปชนกับตัวอื่น
+		if (current.isExploding()){
 			return false;
 		}
 

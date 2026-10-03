@@ -62,7 +62,7 @@ public class Meteo implements Runnable {
             y = y + dy;
 
             // ชนขอบแล้วสะท้อนกลับ
-             if (x <= 0) {
+            if (x <= 0) {
                 x = 0;
                 dx = Math.abs(dx) + 1;
             } else if (x + size >= owner.getWidth()) {

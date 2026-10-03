@@ -77,7 +77,11 @@ public class Meteo implements Runnable {
                 y = owner.getHeight() - size;
                 dy = -(Math.abs(dy) + 1); 
             }
-
+            double speed = Math.sqrt((double) dx * dx + (double) dy * dy);
+            if (speed > 10) {
+                dx = (int) (dx * 10 / speed);
+                dy = (int) (dy * 10 / speed);
+            }
             owner.isColliding(this);
 
             owner.repaint();

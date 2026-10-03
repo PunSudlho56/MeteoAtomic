@@ -69,8 +69,7 @@ public class Meteo implements Runnable {
                 x = owner.getWidth() - size;
                 dx = -(Math.abs(dx) + 1);
             }
-
-            //567867
+            
             if (y <= 0) {
                 y = 0;
                 dy = Math.abs(dy) + 1; 

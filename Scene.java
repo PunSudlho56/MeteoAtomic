@@ -1,7 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 import java.util.*;
-//11
+
 public class Scene extends JPanel {
     private ArrayList<Meteo> meteos = new ArrayList<Meteo>();
     private Random random = new Random();
@@ -11,8 +11,8 @@ public class Scene extends JPanel {
         for (int i = 0; i < number; i++) {
 			int x = random.nextInt(650) + 20;
 			int y = random.nextInt(450) + 20;
-			int dx = random.nextInt(5) - 2;
-			int dy = random.nextInt(5) - 2;
+			int dx = random.nextInt(7) - 3;
+			int dy = random.nextInt(7) - 3;
 
 			// ไม่ให้ลูกใดหยุด
 			if (dx == 0 && dy == 0) {
